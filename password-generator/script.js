@@ -47,7 +47,12 @@ function generatePassword(lower, upper, number, symbol, length) {
         return ''
     }
 
-    for(let i = 0; i < length; i += typesCount) {
+    if (length > 9999) {
+        alert("The length of password is out of range")
+        return ''
+    }
+
+    for (let i = 0; i < length  ; i += typesCount) {
         typesArr.forEach(type => {
             const funcName = Object.keys(type)[0]
             generatedPassword += randomFunc[funcName]()
